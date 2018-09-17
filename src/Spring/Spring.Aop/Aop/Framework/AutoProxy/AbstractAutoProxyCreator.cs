@@ -246,7 +246,13 @@ namespace Spring.Aop.Framework.AutoProxy
                 return obj;
             }
 
-            Type objectType = RemotingServices.IsTransparentProxy(obj)
+#if NETSTANDARD
+            var isTransparentProxy = false;
+#else
+            var isTransparentProxy = RemotingServices.IsTransparentProxy(obj);
+#endif
+
+            Type objectType = isTransparentProxy
                 ? ObjectFactory.GetType(objectName)
                 : obj.GetType();
 

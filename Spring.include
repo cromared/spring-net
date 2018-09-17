@@ -257,7 +257,6 @@
 	        <import namespace="System.Reflection" />
 	    </imports>
 	    <attributes>
-		<attribute type="CLSCompliantAttribute" value="${assembly.is-cls-compliant}" />
 		<attribute type="AssemblyConfigurationAttribute" value="${assembly.configuration}" />
 		<attribute type="AssemblyProductAttribute" value="${assembly.product}" />
 		<attribute type="AssemblyCompanyAttribute" value="${assembly.company}" />

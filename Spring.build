@@ -853,7 +853,6 @@ Commandline Examples:
           <include name="**/nunit.*.xml"/>
           <include name="**/NUnitAsp.dll"/>
           <include name="**/NUnitAspEx.dll"/>
-          <include name="**/Rhino.Mocks.dll"/>
           <include if="${not net-4.0}" name="**/System.Web.Extensions.dll"/>
           <include name="**/Apache.NMS.dll"/>
           <include name="**/Apache.NMS.pdb"/>

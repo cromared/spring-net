@@ -75,21 +75,7 @@ namespace Spring.Aop.Support
             Patterns = patterns;
         }
 
-	    /// <summary>
-	    /// Creates a new instance of the
-	    /// <see cref="SdkRegularExpressionMethodPointcut"/> class.
-	    /// </summary>
-	    /// <param name="info">
-	    /// The <see cref="System.Runtime.Serialization.SerializationInfo"/>
-	    /// that holds the serialized object data about the exception being thrown.
-	    /// </param>
-	    /// <param name="context">
-	    /// The <see cref="System.Runtime.Serialization.StreamingContext"/>
-	    /// that contains contextual information about the source or destination.
-	    /// </param>
-	    /// <exception cref="AopAlliance.Aop.AspectException">
-	    /// If an error was encountered during the deserialization process.
-	    /// </exception>
+	    /// <inheritdoc />
 	    protected SdkRegularExpressionMethodPointcut(SerializationInfo info, StreamingContext context)
 	        : base(info, context)
 	    {

@@ -286,6 +286,7 @@ namespace Spring.Context.Support
             }
         }
 
+#if !NETCOREAPP
         /// <summary>
         /// Test the happy day scenario of returning an object
         /// </summary>
@@ -334,6 +335,7 @@ namespace Spring.Context.Support
             sbText.Replace(" ", String.Empty);
             return sbText.ToString();
         }
+#endif
 
         /// <summary>
         /// Test applying a family of resources to an object.

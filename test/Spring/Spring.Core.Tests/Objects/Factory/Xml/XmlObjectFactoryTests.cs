@@ -1,5 +1,3 @@
-#region License
-
 /*
  * Copyright © 2002-2011 the original author or authors.
  *
@@ -16,8 +14,6 @@
  * limitations under the License.
  */
 
-#endregion
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,7 +22,10 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Threading;
+#if !NETCOREAPP
 using System.Web.Services;
+#endif
+
 using Common.Logging;
 using Common.Logging.Simple;
 
@@ -1825,6 +1824,7 @@ namespace Spring.Objects.Factory.Xml
             factory.GetObject("foo");
         }
 
+#if !NETCOREAPP
         [Test]
         public void TestExpressionAttribute()
         {
@@ -1866,8 +1866,7 @@ namespace Spring.Objects.Factory.Xml
             Assert.AreEqual("My First Web Method", ((WebMethodAttribute)eto.SomeDictionary["method1"]).Description);
             Assert.AreEqual("My Second Web Method", ((WebMethodAttribute)eto.SomeDictionary["method2"]).Description);
         }
-
-        #region Helper Classes
+#endif
 
         public class LazyWorker
         {
@@ -2054,8 +2053,6 @@ namespace Spring.Objects.Factory.Xml
                 destroyed = true;
             }
         }
-
-        #endregion
     }
 
 
