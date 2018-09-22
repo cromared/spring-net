@@ -375,7 +375,7 @@ Commandline Examples:
 		</items>
 	  </in>
       <do>
-		<echo message="Running tests for ${path}" />
+		<echo message="Running .NET Framework tests for ${path}" />
         <property name="test.bin.dir" value="${path}/net452" />
         <property name="test.assemblyname" value="${string::substring(path, string::last-index-of(path, '\') + 1, string::get-length(path) - string::last-index-of(path, '\') - 1)}" />
         <property name="test.assemblyfile" value="${test.assemblyname}.dll" />
@@ -383,6 +383,9 @@ Commandline Examples:
         <call target="common.run-tests" />
       </do>
     </foreach>	
+	
+	<!-- run .NET Core separately for now -->
+    <call target="compile-test-netcore" />
 	
     <!-- build coverage summary -->
 	<exec program="${tool.dir}/ncoverexplorer/ncoverexplorer.console.exe" workingdir="${current.bin.dir}" failonerror="false" if="${test.coverage.tool == 'ncover' and test.withcoverage}">
@@ -400,6 +403,27 @@ Commandline Examples:
 	</exec>
   </target>
 
+  <target name="compile-test-netcore">
+    <foreach item="File" property="file">
+	  <in>
+	    <items>
+		   <include name="${spring.basedir}/test/Spring/Spring.Core.Tests/Spring.Core.Tests.2010.csproj" />
+		   <include name="${spring.basedir}/test/Spring/Spring.Aop.Tests/Spring.Aop.Tests.2010.csproj" />
+		</items>
+	  </in>
+      <do>
+        <echo message="Running .NET Core tests for ${file}" />
+
+        <exec program="dotnet" verbose="true">
+          <arg line="test" />
+          <arg line="-c ${current.build.config}" />
+          <arg line="-f netcoreapp2.1" />
+          <arg line="${file}" />
+		</exec>
+      </do>
+    </foreach>	
+  </target>
+  
   <target name="compile-net-4.5" description="Builds .NET Framework 4.5 version"
         depends="set-net-4.5-runtime-configuration, check-spring-basedir, clean-current-bin-dir, restore-nuget-packages">
 	

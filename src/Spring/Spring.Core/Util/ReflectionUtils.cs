@@ -1238,28 +1238,19 @@ namespace Spring.Util
                 }
                 else if (attrsData.Count > 0)
                 {
-                    if (SystemUtils.Clr4Runtime)
+                    bool hasSecurityAttribute = false;
+                    foreach (CustomAttributeData cad in attrsData)
                     {
-                        bool hasSecurityAttribute = false;
-                        foreach (CustomAttributeData cad in attrsData)
+                        if (typeof(SecurityAttribute).IsAssignableFrom(cad.Constructor.DeclaringType))
                         {
-                            if (typeof(SecurityAttribute).IsAssignableFrom(cad.Constructor.DeclaringType))
-                            {
-                                hasSecurityAttribute = true;
-                                break;
-                            }
+                            hasSecurityAttribute = true;
+                            break;
                         }
-                        if (hasSecurityAttribute)
-                        {
-                            attributes.AddRange(attrs);
-                        }
-                        else
-                        {
-                            foreach (CustomAttributeData cad in attrsData)
-                            {
-                                attributes.Add(cad);
-                            }
-                        }
+                    }
+
+                    if (hasSecurityAttribute)
+                    {
+                        attributes.AddRange(attrs);
                     }
                     else
                     {
@@ -1644,6 +1635,7 @@ namespace Spring.Util
             }
             return handler;
         }
+
 
         #region Field Cache Management for "MemberwiseCopy"
 

@@ -42,10 +42,10 @@
     <Compile Remove="Util\ObjectUtilsTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\**">
+    <Content Include="App.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="App.config">
+    <Content Include="Data\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Compile Remove="Context\Attributes\FailAssemblyObjectDefinitionScannerTests.cs" />
@@ -70,5 +70,6 @@
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="xcopy &quot;$(ProjectDir)Data&quot; &quot;$(OutDir)&quot; /y /s /q /d" />
+    <Exec Command="copy &quot;$(ProjectDir)App.config&quot; &quot;$(OutDir)testhost.dll.config&quot;" />
   </Target>
 </Project>

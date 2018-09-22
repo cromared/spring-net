@@ -1210,7 +1210,11 @@ namespace Spring.Util
         {
             IList attrs = ReflectionUtils.GetCustomAttributes(typeof(ClassWithAttributes));
 
+#if NETCOREAPP
+            Assert.AreEqual(1, attrs.Count);
+#else
             Assert.AreEqual(2, attrs.Count);
+#endif
         }
 
         [Test]
@@ -1218,7 +1222,11 @@ namespace Spring.Util
         {
             IList attrs = ReflectionUtils.GetCustomAttributes(typeof(ClassWithAttributes).GetMethod("MethodWithAttributes"));
 
+#if NETCOREAPP
+            Assert.AreEqual(1, attrs.Count);
+#else
             Assert.AreEqual(2, attrs.Count);
+#endif
         }
 
         #endregion
