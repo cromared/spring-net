@@ -1,5 +1,3 @@
-#region License
-
 /*
  * Copyright © 2002-2011 the original author or authors.
  *
@@ -16,10 +14,6 @@
  * limitations under the License.
  */
 
-#endregion
-
-#region Imports
-
 using System;
 using System.Reflection;
 using System.Runtime.Serialization;
@@ -28,8 +22,6 @@ using System.Security.Permissions;
 using AopAlliance.Aop;
 
 using Spring.Util;
-
-#endregion
 
 namespace Spring.Aop.Support
 {
@@ -58,8 +50,6 @@ namespace Spring.Aop.Support
     {
         [NonSerialized]
         private object[] _patterns = ObjectUtils.EmptyObjects;
-
-        #region Constructors
 
         /// <summary>
         /// Creates a new instance of the
@@ -103,10 +93,6 @@ namespace Spring.Aop.Support
                     "Failed to deserialize AOP regular expression pointcut: " + ex.Message);
             }
         }
-
-        #endregion
-
-        #region Properties
 
         /// <summary>
         /// The <see cref="Spring.Aop.ITypeFilter"/> for this pointcut.
@@ -152,10 +138,6 @@ namespace Spring.Aop.Support
                 InitPatternRepresentation(this.Patterns);
             }
         }
-
-        #endregion
-
-        #region Methods
 
         /// <inheritdoc />
         [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
@@ -267,7 +249,5 @@ namespace Spring.Aop.Support
         {
             return true;
         }
-
-        #endregion
     }
 }

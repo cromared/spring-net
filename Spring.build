@@ -416,6 +416,7 @@ Commandline Examples:
 
         <exec program="dotnet" verbose="true">
           <arg line="test" />
+          <arg line="/nodeReuse:false" />
           <arg line="-c ${current.build.config}" />
           <arg line="-f netcoreapp2.1" />
           <arg line="${file}" />
@@ -425,7 +426,7 @@ Commandline Examples:
   </target>
   
   <target name="compile-net-4.5" description="Builds .NET Framework 4.5 version"
-        depends="set-net-4.5-runtime-configuration, check-spring-basedir, clean-current-bin-dir, restore-nuget-packages">
+        depends="set-net-4.5-runtime-configuration, check-spring-basedir, restore-nuget-packages">
 	
 	<property name="test.withcoverage" value="false" overwrite="true"/>
 	
@@ -469,7 +470,7 @@ Commandline Examples:
   </target>  
   
   <target name="compile-mono-2.0" description="Builds MONO Framework 2.0 version"
-          depends="set-mono-2.0-runtime-configuration, check-spring-basedir, clean-current-bin-dir">
+          depends="set-mono-2.0-runtime-configuration, check-spring-basedir">
     <call target="copykeys" if="${project.build.sign}"/>
     <call target="common.generate-assemblyinfo"/>
     <property name="build-ems" value="false" overwrite="true" />

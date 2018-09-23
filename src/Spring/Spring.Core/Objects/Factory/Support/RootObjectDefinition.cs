@@ -61,8 +61,6 @@ namespace Spring.Objects.Factory.Support
     [Serializable]
     public class RootObjectDefinition : AbstractObjectDefinition
     {
-        #region Constructor (s) / Destructor
-
         /// <summary>
         /// Creates a new instance of the
         /// <see cref="Spring.Objects.Factory.Support.RootObjectDefinition"/> class.
@@ -252,8 +250,6 @@ namespace Spring.Objects.Factory.Support
         /// </param>
         public RootObjectDefinition(IObjectDefinition other) : base(other)
         {}
-
-        #endregion
 
         /// <summary>
         /// Is always <c>null</c> for a <see cref="RootObjectDefinition"/>.
